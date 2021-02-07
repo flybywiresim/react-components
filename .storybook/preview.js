@@ -11,6 +11,9 @@
  * - globalTypes - definition of globalTypes
  */
 
+// Import bundled tailwindcss
+import '../build/bundle.css';
+
 /**
  * Decorators
  *

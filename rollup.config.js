@@ -28,7 +28,15 @@ export default {
         commonjs(),
         image(),
         typescript({ useTsconfigDeclarationDir: true }),
-        postcss(),
+        postcss({
+            plugins: [
+                require('tailwindcss'),
+                require('cssnano')({
+                    preset: 'default',
+                }),
+            ],
+            extract: 'bundle.css'
+        }),
         copy({
             targets: [
                 {
