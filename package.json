@@ -28,6 +28,7 @@
   "types": "build/index.d.ts",
   "scripts": {
     "build": "rollup -c",
+    "build:watch": "rollup -cw",
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
