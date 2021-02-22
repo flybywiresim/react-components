@@ -1,0 +1,170 @@
+// Generated with util/create-component.js
+@import "../variables.scss";
+@import "../typography.scss";
+@import "~leaflet/dist/leaflet.css";
+
+#live-map {
+  height: 100%;
+  width: 100%;
+
+  #menu-panel {
+    pointer-events: all !important;
+    margin: 1rem;
+    width: 20rem;
+    border-radius: $menu-border-radius;
+    border: $menu-border-thickness solid $fbw-blue;
+    background: $menu-background;
+
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+    &:hover {
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+
+    .search-bar {
+      display: flex;
+
+      .menu-button {
+        border-radius: $menu-border-radius;
+        width: 3rem;
+        border: none;
+        cursor: pointer;
+        background: $menu-background;
+
+        &:focus {
+          outline: 0;
+        }
+      }
+
+      .search-term {
+        width: 100%;
+        border: none;
+        padding: 0.5rem;
+        height: 1.3rem;
+        color: $fbw-dark-blue;
+        font-size: medium;
+        background: $menu-background;
+
+        &:focus {
+          outline: 0;
+        }
+      }
+
+      .search-button {
+        width: 3rem;
+        border: none;
+        background: $fbw-blue;
+        cursor: pointer;
+
+        &:focus {
+          outline: 0;
+        }
+      }
+    }
+
+    .divider {
+      margin-left: 2.5rem;
+      border-top: 1px solid #b5b5b5;
+    }
+
+    .detail-area {
+      padding: 0.5rem;
+
+      .tileset-select {
+        margin: 0.5rem;
+
+        input[type=radio] {
+          position: absolute;
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+
+        input[type=radio] + img {
+          cursor: pointer;
+        }
+
+        input[type=radio]:checked + img {
+          outline: 3px solid $fbw-blue;
+        }
+      }
+
+      .active-flights {
+        margin: 0;
+        font-size: small;
+        text-align: end;
+        line-height: 150%;
+
+        span {
+          font-size: x-large;
+        }
+      }
+    }
+  }
+
+  .aircraft-popup {
+    margin-bottom: 35px;
+
+    .leaflet-popup-content-wrapper,
+    .leaflet-popup-tip {
+      background-color: $popup;
+    }
+  }
+
+  .airport-tooltip {
+    background-color: $tooltip;
+    border: none;
+    margin-top: -20px;
+
+    &:before {
+      border-top-color: $tooltip;
+    }
+  }
+
+  .leaflet-control {
+    cursor: pointer;
+  }
+
+  a.polyline-measure-controlOnBgColor,
+  a.polyline-measure-controlOnBgColor:hover {
+    background-color: #8f8;
+  }
+
+  .polyline-measure-unicode-icon {
+    font-size: 19px;
+    font-weight: bold;
+  }
+
+  a.polyline-measure-clearControl:active {
+    background-color: #f88;
+  }
+
+  .polyline-measure-tooltip {
+    line-height: 120%;
+    padding: 0.5rem;
+    background-color: $tooltip;
+    border-radius: 3px;
+    margin: 0;
+    width: auto !important;
+    height: auto !important;
+    white-space: nowrap;
+    text-align: right;
+    z-index: 9999 !important;
+  }
+
+  .polyline-measure-tooltip-end {
+    background-color: #b7f4f5;
+  }
+
+  .polyline-measure-tooltip-total {
+    color: #006;
+    font-weight: bold;
+  }
+
+  .polyline-measure-tooltip-difference {
+    color: #006600;
+    font-style: italic;
+  }
+
+}
