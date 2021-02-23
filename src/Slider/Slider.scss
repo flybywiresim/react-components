@@ -1,0 +1,65 @@
+@import "../variables.scss";
+@import "../typography.scss";
+
+.slider, .slider-light {
+  @apply rounded-full;
+
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+}
+
+@mixin slider-handle($dark: true) {
+  @if $dark == true {
+    @apply bg-teal-light-contrast;
+  } @else {
+    @apply bg-teal;
+  }
+
+  @apply rounded-full;
+  @apply border-0;
+  @apply shadow-sm;
+
+  $slider-size: 16px;
+
+  width: $slider-size !important;
+  height: $slider-size !important;
+
+  cursor: pointer;
+}
+
+.slider {
+  @apply bg-blue-darker;
+
+  &::-webkit-slider-thumb {
+    @include slider-handle;
+    -webkit-appearance: none;
+
+    transform: translateY(10px);
+  }
+
+  &::-moz-range-thumb {
+    @include slider-handle;
+    appearance: none;
+
+    transform: translateY(2px);
+  }
+}
+
+.slider-light {
+  @apply bg-gray-200;
+
+  &::-webkit-slider-thumb {
+    @include slider-handle(false);
+    -webkit-appearance: none;
+
+    transform: translateY(10px);
+  }
+
+  &::-moz-range-thumb {
+    @include slider-handle(false);
+    appearance: none;
+
+    transform: translateY(2px);
+  }
+}
