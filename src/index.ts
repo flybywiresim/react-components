@@ -1,4 +1,4 @@
 import './tailwind.css';
-import DummyComponent from './DummyComponent';
 
-export { DummyComponent };
+export * from './hooks';
+export * from './Map';
