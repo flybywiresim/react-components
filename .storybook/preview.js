@@ -12,7 +12,7 @@
  */
 
 // Import bundled tailwindcss
-import '../build/bundle.css';
+import '../src/tailwind.css';
 
 /**
  * Decorators

@@ -31,11 +31,7 @@ export default {
         postcss({
             plugins: [
                 require('tailwindcss'),
-                require('cssnano')({
-                    preset: 'default',
-                }),
             ],
-            extract: 'bundle.css'
         }),
         copy({
             targets: [
@@ -48,6 +44,10 @@ export default {
                     src: 'src/typography.scss',
                     dest: 'build',
                     rename: 'typography.scss'
+                },
+                {
+                    src: 'node_modules/leaflet/dist/images',
+                    dest: 'build'
                 }
             ]
         })

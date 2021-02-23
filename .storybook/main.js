@@ -7,7 +7,23 @@ module.exports = {
   webpackFinal: async (config) => {
     config.module.rules.push({
       test: /\.scss$/,
-      use: ["style-loader", "css-loader", "sass-loader"],
+      use: [
+        "style-loader",
+        {
+          loader: "postcss-loader",
+          options: {
+            ident: "postcss",
+            use: {
+              sass: {},
+            },
+            plugins: [
+              require("tailwindcss"),
+              require("autoprefixer"),
+            ],
+          },
+        },
+        "sass-loader"
+      ],
       include: path.resolve(__dirname, "../")
     });
 
