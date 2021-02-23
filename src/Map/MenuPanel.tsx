@@ -4,6 +4,9 @@ import { useMap } from 'react-leaflet';
 import L, { LatLng } from 'leaflet';
 import { useInterval } from '../hooks';
 import { TileSet } from './Map.types';
+import { ChevronDown, ChevronUp, Menu, Menu2, Search } from 'tabler-icons-react';
+import Toggle from '../Toggle';
+import Slider from '../Slider';
 
 type MenuPanelProps = {
     // eslint-disable-next-line no-unused-vars
@@ -107,25 +110,18 @@ const MenuPanel = (props: MenuPanelProps): JSX.Element => {
     }
 
     return (
-        <div id="menu-panel" className="leaflet-top leaflet-left">
-            <div className="search-bar">
+        <div id="menu-panel" className="leaflet-top leaflet-left flex flex-col">
+            <div className="w-full z-50 flex flex-row items-center h-11 px-3 py-2 bg-gray-50 border-2 border-teal-300 rounded-md shadow-md">
                 <button
-                    className="menu-button"
+                    className="menu-button w-8 border-0 pointer focus:outline-none"
                     aria-label="Menu"
                     onClick={() => setShowDetails(!showDetails)}>
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg" strokeWidth="2" stroke="#b5b5b5" fill="none"
-                        width="24" height="24" viewBox="0 0 24 24"
-                        strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="4" y1="6" x2="20" y2="6"/>
-                        <line x1="4" y1="12" x2="20" y2="12"/>
-                        <line x1="4" y1="18" x2="20" y2="18"/>
-                    </svg>
+                    <ChevronDown className={`text-gray-500 transform transition-transform ${showDetails ? 'rotate-180' : ''}`} />
                 </button>
                 <input
                     type="text"
                     aria-label="Search Field"
-                    className="search-term"
+                    className="text-base bg-gray-50 placeholder-gray-500 text-gray-600 focus:outline-none"
                     list="autocomplete"
                     placeholder="Flight Number"
                     onChange={event => {
@@ -139,15 +135,9 @@ const MenuPanel = (props: MenuPanelProps): JSX.Element => {
                     type="submit"
                     aria-label="Search"
                     onClick={() => handleSearch()}
-                    className="search-button">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg" strokeWidth="3" stroke="#fff" fill="none"
-                        width="24" height="24" viewBox="0 0 24 24"
-                        strokeLinecap="round" strokeLinejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                        <circle cx="10" cy="10" r="7"/>
-                        <line x1="21" y1="21" x2="15" y2="15"/>
-                    </svg>
+                    className="search-button ml-auto border-0 pointer"
+                >
+                    <Search className="text-gray-500" />
                 </button>
                 <datalist id="autocomplete">
                     {
@@ -157,49 +147,53 @@ const MenuPanel = (props: MenuPanelProps): JSX.Element => {
                 </datalist>
             </div>
             <div className="divider" hidden={!showDetails} />
-            <div className="detail-area" hidden={!showDetails}>
+            <div className="detail-area bg-gray-100 px-4 py-4 text-gray-50 divide-y divide-gray-300 -mt-1.5 rounded-b-md shadow-lg" hidden={!showDetails}>
                 {
                     (props.weatherOpacity !== undefined && props.onWeatherOpacityChange) ?
                         <>
-                            <p>Weather opacity</p>
-                            <input
-                                type="range"
+                            <h1 className="text-base text-gray-700 font-semibold">Weather opacity</h1>
+
+                            <Slider
+                                className="w-full"
+                                dark={false}
                                 value={100 * props.weatherOpacity}
-                                min={0}
-                                max={100}
-                                onChange={event => props.onWeatherOpacityChange && props.onWeatherOpacityChange(Number(event.target.value) / 100)}
+                                onInput={(value) => props.onWeatherOpacityChange && props.onWeatherOpacityChange(Number(value) / 100)}
                             />
                         </> : <></>
                 }
                 {
                     (props.activeTileSet && props.availableTileSets && props.onTileSetChange) ?
-                        <div onChange={handleTileSelect}>
-                            {
-                                props.availableTileSets.map(tileSet =>
-                                    <label className="tileset-select" key={tileSet.value} >
-                                        <input
-                                            type="radio"
-                                            name="tileset"
-                                            value={tileSet.value}
-                                            defaultChecked={props.activeTileSet && tileSet.value === props.activeTileSet.value} />
-                                        <img src={tileSet.previewImageUrl} alt={tileSet.name} width="60rem" />
-                                    </label>
-                                )
-                            }
+                        <div className="mt-3 pt-2">
+                            <h1 className="text-base text-gray-700 font-semibold mb-1">Theme</h1>
+
+                            <div onChange={handleTileSelect} className="flex flex-row space-x-4">
+                                {
+                                    props.availableTileSets.map(tileSet =>
+                                        <label className="tileset-select flex-grow" key={tileSet.value} >
+                                            <input
+                                                type="radio"
+                                                name="tileset"
+                                                value={tileSet.value}
+                                                defaultChecked={props.activeTileSet && tileSet.value === props.activeTileSet.value} />
+                                            <img src={tileSet.previewImageUrl} alt={tileSet.name} className="w-full rounded-sm shadow-md" />
+                                        </label>
+                                    )
+                                }
+                            </div>
                         </div> : <></>
                 }
                 {
                     props.onShowOthersChange ?
-                        <>
-                            <p>Show others</p>
-                            <input
-                                type="checkbox"
-                                checked={props.showOthers}
-                                onChange={event => props.onShowOthersChange ? props.onShowOthersChange(event.target.checked) : {}}
-                            />
-                        </> : <></>
+                        <div className="flex flex-row justify-between items-center mt-3 pt-3 pb-3">
+                            <h1 className="text-base text-gray-700 font-semibold">Show others</h1>
+
+                            <Toggle dark={false} value={props.showOthers} onToggle={props.onShowOthersChange ?? (() => {})} />
+                        </div> : <></>
                 }
-                <p className="active-flights">Active Flights<br/><span>{totalFlights.toString()}</span></p>
+                <span className="active-flights">
+                    <h1 className="text-sm text-gray-800 -mb-1">Active Flights</h1>
+                    <h1 className="text-2xl font-bold text-gray-800 -mb-2">{totalFlights.toString()}</h1>
+                </span>
             </div>
         </div>
     );

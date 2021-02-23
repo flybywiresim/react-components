@@ -11,69 +11,23 @@
     pointer-events: all !important;
     margin: 1rem;
     width: 20rem;
-    border-radius: $menu-border-radius;
-    border: $menu-border-thickness solid $fbw-blue;
-    background: $menu-background;
 
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    input::placeholder {
+      opacity: 1;
+    }
+
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 
     &:hover {
       box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     }
-
-    .search-bar {
-      display: flex;
-
-      .menu-button {
-        border-radius: $menu-border-radius;
-        width: 3rem;
-        border: none;
-        cursor: pointer;
-        background: $menu-background;
-
-        &:focus {
-          outline: 0;
-        }
-      }
-
-      .search-term {
-        width: 100%;
-        border: none;
-        padding: 0.5rem;
-        height: 1.3rem;
-        color: $fbw-dark-blue;
-        font-size: medium;
-        background: $menu-background;
-
-        &:focus {
-          outline: 0;
-        }
-      }
-
-      .search-button {
-        width: 3rem;
-        border: none;
-        background: $fbw-blue;
-        cursor: pointer;
-
-        &:focus {
-          outline: 0;
-        }
-      }
-    }
-
     .divider {
       margin-left: 2.5rem;
       border-top: 1px solid #b5b5b5;
     }
 
     .detail-area {
-      padding: 0.5rem;
-
       .tileset-select {
-        margin: 0.5rem;
-
         input[type=radio] {
           position: absolute;
           opacity: 0;
@@ -83,10 +37,11 @@
 
         input[type=radio] + img {
           cursor: pointer;
+          outline: 1.5px solid rgb(209, 213, 219);
         }
 
         input[type=radio]:checked + img {
-          outline: 3px solid $fbw-blue;
+          outline: 1.5px solid $fbw-blue;
         }
       }
 
