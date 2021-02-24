@@ -184,16 +184,16 @@ const MenuPanel = (props: MenuPanelProps): JSX.Element => {
                 }
                 {
                     props.onShowOthersChange ?
-                        <div className="flex flex-row justify-between items-center mt-3 pt-3 pb-3">
+                        <div className="flex flex-row justify-between items-center mt-3.5 pt-3 pb-3">
                             <h1 className="text-base text-gray-700 font-semibold">Show others</h1>
 
                             <Toggle dark={false} value={props.showOthers} onToggle={props.onShowOthersChange ?? (() => {})} />
                         </div> : <></>
                 }
-                <span className="active-flights">
-                    <h1 className="text-sm text-gray-800 -mb-1">Active Flights</h1>
-                    <h1 className="text-2xl font-bold text-gray-800 -mb-2">{totalFlights.toString()}</h1>
-                </span>
+                <div className="flex flex-row justify-between items-center pt-3 -mb-1.5">
+                    <h1 className="text-base uppercase text-gray-700 font-semibold">Active Flights</h1>
+                    <h1 className="text-4xl font-semibold text-teal-light-contrast">{totalFlights.toString()}</h1>
+                </div>
             </div>
         </div>
     );
