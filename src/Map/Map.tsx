@@ -28,18 +28,6 @@ const Map = (props: MapProps): JSX.Element => {
     const availableTileSets: TileSet[] = [
         {
             id: 1,
-            value: 'carto-dark',
-            name: 'Dark',
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
-            url: 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png',
-            planeIcon: PlaneCyan,
-            planeIconHighlight: PlaneBlue,
-            departureIcon: DepartureWhite,
-            arrivalIcon: ArrivalWhite,
-            previewImageUrl: CartoDarkPreview,
-        },
-        {
-            id: 2,
             value: 'carto-light',
             name: 'Light',
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
@@ -51,7 +39,7 @@ const Map = (props: MapProps): JSX.Element => {
             previewImageUrl: CartoLightPreview,
         },
         {
-            id: 3,
+            id: 2,
             value: 'osm',
             name: 'Open Street Map',
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
@@ -61,6 +49,18 @@ const Map = (props: MapProps): JSX.Element => {
             departureIcon: DepartureGray,
             arrivalIcon: ArrivalGray,
             previewImageUrl: OsmPreview,
+        },
+        {
+            id: 3,
+            value: 'carto-dark',
+            name: 'Dark',
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+            url: 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png',
+            planeIcon: PlaneCyan,
+            planeIconHighlight: PlaneBlue,
+            departureIcon: DepartureWhite,
+            arrivalIcon: ArrivalWhite,
+            previewImageUrl: CartoDarkPreview,
         }
     ];
 
