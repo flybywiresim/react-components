@@ -7,6 +7,9 @@
   height: 100%;
   width: 100%;
 
+  // Prevent leaflet from setting its own font
+  font-family: "Nunito Sans", sans-serif !important;
+
   #menu-panel {
     pointer-events: all !important;
     margin: 1rem;

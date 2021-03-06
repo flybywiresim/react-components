@@ -4,7 +4,7 @@ import { useMap } from 'react-leaflet';
 import L, { LatLng } from 'leaflet';
 import { useInterval } from '../hooks';
 import { TileSet } from './Map.types';
-import { ChevronDown, ChevronUp, Menu, Menu2, Search } from 'tabler-icons-react';
+import { ChevronDown, Search } from 'tabler-icons-react';
 import Toggle from '../Toggle';
 import Slider from '../Slider';
 
