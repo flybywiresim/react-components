@@ -35,7 +35,7 @@
     @include slider-handle;
     -webkit-appearance: none;
 
-    transform: translateY(10px);
+    transform: translateY(2px);
   }
 
   &::-moz-range-thumb {
@@ -43,6 +43,10 @@
     appearance: none;
 
     transform: translateY(2px);
+  }
+
+  &.msfs {
+    transform: translateY(10px);
   }
 }
 
@@ -53,7 +57,7 @@
     @include slider-handle(false);
     -webkit-appearance: none;
 
-    transform: translateY(10px);
+    transform: translateY(2px);
   }
 
   &::-moz-range-thumb {
@@ -61,5 +65,9 @@
     appearance: none;
 
     transform: translateY(2px);
+  }
+
+  &.msfs {
+    transform: translateY(10px);
   }
 }
