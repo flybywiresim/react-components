@@ -1,2 +1,4 @@
-// Generated with util/create-component.js
-export { default } from './Toggle';
+import Toggle from './Toggle';
+
+export { Toggle };
+export { ToggleProps } from './Toggle';

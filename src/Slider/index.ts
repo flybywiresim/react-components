@@ -1,2 +1,4 @@
-// Generated with util/create-component.js
-export { default } from './Slider';
+import Slider from './Slider';
+
+export { Slider };
+export { SliderProps } from './Slider';
