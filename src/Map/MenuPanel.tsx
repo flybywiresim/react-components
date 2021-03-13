@@ -5,8 +5,8 @@ import L, { LatLng } from 'leaflet';
 import { useInterval } from '../hooks';
 import { TileSet } from './Map.types';
 import { ChevronDown, Search } from 'tabler-icons-react';
-import Toggle from '../Toggle';
-import Slider from '../Slider';
+import { Toggle } from '../Toggle';
+import { Slider } from '../Slider';
 
 type MenuPanelProps = {
     // eslint-disable-next-line no-unused-vars
