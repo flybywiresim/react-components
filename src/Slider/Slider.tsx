@@ -4,7 +4,7 @@ import './Slider.scss';
 
 export type SliderProps = { className?: string, value?: number, onInput?: (v: number) => void, dark?: boolean };
 
-const Slider: React.FC<SliderProps> = ({ className, onInput, value, dark = true }) => {
+const Slider: React.FC<SliderProps> = ({ className, onInput, value, dark = true }: SliderProps) => {
     const sliderRef = useRef<HTMLInputElement>(null);
 
     const handleInput = () => {
