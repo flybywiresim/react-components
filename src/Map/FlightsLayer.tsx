@@ -24,17 +24,17 @@ export type FlightsLayerProps = {
 
 const FlightsLayer = (props: FlightsLayerProps): JSX.Element => {
     const map = useMapEvents({
-        moveend: event => {
+        moveend: (event) => {
             const newBounds = event.target.getBounds();
 
             if (!bounds.contains(newBounds)) {
                 setBounds(newBounds);
             }
-        }
+        },
     });
 
     // eslint-disable-next-line no-unused-vars
-    const [isUpdating, setIsUpdating] = useState<boolean>(false);
+    const [, setIsUpdating] = useState<boolean>(false);
     const [data, setData] = useState<TelexConnection[]>([]);
     const [bounds, setBounds] = useState<LatLngBounds>(map.getBounds());
     const [selectedConnection, setSelectedConnection] = useState<TelexConnection | null>(null);
@@ -60,14 +60,14 @@ const FlightsLayer = (props: FlightsLayerProps): JSX.Element => {
             north: 90,
             east: 180,
             south: -90,
-            west: 0
+            west: 0,
         };
         if (bounds) {
             apiBounds = {
                 north: Math.ceil(Math.min(bounds.getNorth(), 90)),
                 east: Math.ceil(Math.min(bounds.getEast(), 180)),
                 south: Math.floor(Math.max(bounds.getSouth(), -90)),
-                west: Math.floor(Math.max(bounds.getWest(), -180))
+                west: Math.floor(Math.max(bounds.getWest(), -180)),
             };
         }
 
@@ -94,7 +94,7 @@ const FlightsLayer = (props: FlightsLayerProps): JSX.Element => {
                     destination: flight.destination,
                 });
 
-                if (props.followCurrent || props.followCurrent == undefined) {
+                if (props.followCurrent || props.followCurrent === undefined) {
                     map.flyTo({ lat: flight.latitude, lng: flight.longitude });
                 }
             } else {
@@ -114,7 +114,7 @@ const FlightsLayer = (props: FlightsLayerProps): JSX.Element => {
     return (
         <FeatureGroup>
             {
-                data.map((connection: TelexConnection) =>
+                data.map((connection: TelexConnection) => (
                     <FlightMarker
                         key={connection.id}
                         connection={connection}
@@ -122,15 +122,19 @@ const FlightsLayer = (props: FlightsLayerProps): JSX.Element => {
                         highlightIcon={props.planeIconHighlight}
                         isHighlighted={(props.searchedFlight && props.searchedFlight.flight === connection.flight) || currentFlight?.flightNumber === connection.flight}
                         onPopupOpen={() => setSelectedConnection(connection)}
-                        onPopupClose={() => setSelectedConnection(null)}/>
-                )
+                        onPopupClose={() => setSelectedConnection(null)}
+                    />
+                ))
             }
             {
-                (selectedConnection !== null) ?
-                    <AirportsLayer
-                        connection={selectedConnection}
-                        departureIcon={props.departureIcon}
-                        arrivalIcon={props.arrivalIcon}/> : ''
+                (selectedConnection !== null)
+                    ? (
+                        <AirportsLayer
+                            connection={selectedConnection}
+                            departureIcon={props.departureIcon}
+                            arrivalIcon={props.arrivalIcon}
+                        />
+                    ) : ''
             }
         </FeatureGroup>
     );

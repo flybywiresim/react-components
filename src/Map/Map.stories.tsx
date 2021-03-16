@@ -6,12 +6,11 @@ import { CurrentFlight } from './Map.types';
 
 export default {
     title: 'Map',
-    parameters: {
-        layout: 'fullscreen'
-    }
+    parameters: { layout: 'fullscreen' },
 };
 
-let lat = 1, lng = 1;
+let lat = 1; let
+    lng = 1;
 const currentFlight = async (): Promise<CurrentFlight> => {
     lat *= -1;
     lng *= -1;
@@ -28,7 +27,28 @@ const currentFlight = async (): Promise<CurrentFlight> => {
 };
 
 export const Default: React.FC = () => <div style={{ width: '100vw', height: '100vh' }}><Map /></div>;
-export const ForceCartoLight: React.FC = () => <div style={{ width: '100vw', height: '100vh' }}><Map forceTileset={'carto-light'} /></div>;
-export const NoMenu: React.FC = () => <div style={{ width: '100vw', height: '100vh' }}><Map disableMenu={true} /></div>;
-export const OnlyCurrentFlight: React.FC = () => <div style={{ width: '100vw', height: '100vh' }}><Map currentFlight={currentFlight} hideOthers={true} refreshInterval={1000} /></div>;
-export const OnlyCurrentFlightNoFollow: React.FC = () => <div style={{ width: '100vw', height: '100vh' }}><Map currentFlight={currentFlight} hideOthers={true} refreshInterval={1000} followCurrent={false} /></div>;
+
+export const ForceCartoLight: React.FC = () => <div style={{ width: '100vw', height: '100vh' }}><Map forceTileset="carto-light" /></div>;
+
+export const NoMenu: React.FC = () => <div style={{ width: '100vw', height: '100vh' }}><Map disableMenu /></div>;
+
+export const OnlyCurrentFlight: React.FC = () => (
+    <div style={{ width: '100vw', height: '100vh' }}>
+        <Map
+            currentFlight={currentFlight}
+            hideOthers
+            refreshInterval={1000}
+        />
+    </div>
+);
+
+export const OnlyCurrentFlightNoFollow: React.FC = () => (
+    <div style={{ width: '100vw', height: '100vh' }}>
+        <Map
+            currentFlight={currentFlight}
+            hideOthers
+            refreshInterval={1000}
+            followCurrent={false}
+        />
+    </div>
+);

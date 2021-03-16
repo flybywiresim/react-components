@@ -32,12 +32,19 @@ export type TileSet = {
 
 export class CurrentFlight {
     flightNumber: string;
+
     latitude: number;
+
     longitude: number;
+
     altitude: number;
+
     heading: number;
+
     aircraftType: string;
+
     origin: string;
+
     destination: string;
 }
 

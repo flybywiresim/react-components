@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { TileLayer, MapContainer, ZoomControl } from 'react-leaflet';
 import { NmScale } from '@marfle/react-leaflet-nmscale';
-import WeatherLayer from './WeatherLayer';
 import { TelexConnection } from '@flybywiresim/api-client';
+import WeatherLayer from './WeatherLayer';
 
 import FlightsLayer from './FlightsLayer';
 import MenuPanel from './MenuPanel';
@@ -61,15 +61,14 @@ const Map = (props: MapProps): JSX.Element => {
             departureIcon: DepartureWhite,
             arrivalIcon: ArrivalWhite,
             previewImageUrl: CartoDarkPreview,
-        }
+        },
     ];
 
     const [selectedTile, setSelectedTile] = useLocalStorage<TileSet>(
         'tileSet',
         availableTileSets[0],
-        {
-            valueOverride: !!props.forceTileset && (availableTileSets.find(x => x.value === props.forceTileset)),
-        });
+        { valueOverride: !!props.forceTileset && (availableTileSets.find((x) => x.value === props.forceTileset)) },
+    );
     const [searchedFlight, setSearchedFlight] = useState<TelexConnection>();
     const [weatherOpacity, setWeatherOpacity] = useState<number>(props.weatherOpacity || 0.2);
     const [showOthers, setShowOthers] = useState<boolean>(!props.hideOthers);
@@ -80,52 +79,57 @@ const Map = (props: MapProps): JSX.Element => {
             center={props.center || [50, 8]}
             zoom={props.zoom || 5}
             scrollWheelZoom={!props.disableScroll}
-            worldCopyJump={true}
-            zoomControl={false} >
+            worldCopyJump
+            zoomControl={false}
+        >
             <TileLayer zIndex={0} attribution={selectedTile.attribution} url={selectedTile.url} key={selectedTile.value} />
             {
-                (!props.disableWeather) ?
-                    <WeatherLayer opacity={weatherOpacity} /> : <></>
+                (!props.disableWeather)
+                    ? <WeatherLayer opacity={weatherOpacity} /> : <></>
             }
             {
-                (!props.disableFlights) ?
-                    <FlightsLayer
-                        planeIcon={selectedTile.planeIcon}
-                        planeIconHighlight={selectedTile.planeIconHighlight}
-                        departureIcon={selectedTile.departureIcon}
-                        arrivalIcon={selectedTile.arrivalIcon}
-                        currentFlight={props.currentFlight}
-                        searchedFlight={searchedFlight}
-                        refreshInterval={props.refreshInterval || 10000}
-                        hideOthers={!showOthers}
-                        followCurrent={props.followCurrent}
-                    /> : <></>
+                (!props.disableFlights)
+                    ? (
+                        <FlightsLayer
+                            planeIcon={selectedTile.planeIcon}
+                            planeIconHighlight={selectedTile.planeIconHighlight}
+                            departureIcon={selectedTile.departureIcon}
+                            arrivalIcon={selectedTile.arrivalIcon}
+                            currentFlight={props.currentFlight}
+                            searchedFlight={searchedFlight}
+                            refreshInterval={props.refreshInterval || 10000}
+                            hideOthers={!showOthers}
+                            followCurrent={props.followCurrent}
+                        />
+                    ) : <></>
             }
             {
-                !props.disableMenu ?
-                    <MenuPanel
-                        onFound={(conn) => setSearchedFlight(conn)}
-                        onNotFound={() => setSearchedFlight(undefined)}
-                        onReset={() => setSearchedFlight(undefined)}
-                        weatherOpacity={weatherOpacity}
-                        onWeatherOpacityChange={setWeatherOpacity}
-                        activeTileSet={selectedTile}
-                        availableTileSets={availableTileSets}
-                        onTileSetChange={setSelectedTile}
-                        refreshInterval={props.refreshInterval || 10000}
-                        showOthers={showOthers}
-                        onShowOthersChange={setShowOthers}
-                    />
+                !props.disableMenu
+                    ? (
+                        <MenuPanel
+                            onFound={(conn) => setSearchedFlight(conn)}
+                            onNotFound={() => setSearchedFlight(undefined)}
+                            onReset={() => setSearchedFlight(undefined)}
+                            weatherOpacity={weatherOpacity}
+                            onWeatherOpacityChange={setWeatherOpacity}
+                            activeTileSet={selectedTile}
+                            availableTileSets={availableTileSets}
+                            onTileSetChange={setSelectedTile}
+                            refreshInterval={props.refreshInterval || 10000}
+                            showOthers={showOthers}
+                            onShowOthersChange={setShowOthers}
+                        />
+                    )
                     : <></>
             }
             <ZoomControl position={props.zoomPosition || 'bottomright'} />
             <NmScale />
             <MeasureControl
                 position={props.zoomPosition || 'bottomright'}
-                unit={'nauticalmiles'}
-                showBearings={true}
-                showUnitControl={true}
-                showClearControl={true}
+                unit="nauticalmiles"
+                showBearings
+                showUnitControl
+                showClearControl
                 tempLine={{ color: '#00C2CB', weight: 2 }}
                 fixedLine={{ color: '#00C2CB', weight: 2 }}
             />
