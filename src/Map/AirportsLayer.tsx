@@ -1,10 +1,10 @@
 import { Airport, AirportResponse, TelexConnection } from '@flybywiresim/api-client';
 import React, { useEffect, useState } from 'react';
 
-import ArrivalWhite from './res/icons/arrival_white.png';
-import DepartureWhite from './res/icons/departure_white.png';
 import { FeatureGroup, Marker, Tooltip } from 'react-leaflet';
 import L from 'leaflet';
+import ArrivalWhite from './res/icons/arrival_white.png';
+import DepartureWhite from './res/icons/departure_white.png';
 
 export enum AirportType {
     // eslint-disable-next-line no-unused-vars
@@ -45,7 +45,7 @@ const AirportsLayer = (props: AirportsLayerProps): JSX.Element => {
             findAirports([{
                 icao: props.connection.origin,
                 airportType: AirportType.Departure,
-            },{
+            }, {
                 icao: props.connection.destination,
                 airportType: AirportType.Arrival,
             }]);
@@ -58,6 +58,7 @@ const AirportsLayer = (props: AirportsLayerProps): JSX.Element => {
         for (const search of searches) {
             if (search.icao) {
                 try {
+                    // eslint-disable-next-line no-await-in-loop
                     airports.push(await getAirport(search.icao, search.airportType));
                 } catch (e) {
                     console.error(e);
@@ -80,21 +81,28 @@ const AirportsLayer = (props: AirportsLayerProps): JSX.Element => {
     return (
         <FeatureGroup>
             {
-                displayedAirports.map(arptToShow =>
+                displayedAirports.map((arptToShow) => (
                     <Marker
-                        key={arptToShow.airport.icao + '-' + arptToShow.airportType}
+                        key={`${arptToShow.airport.icao}-${arptToShow.airportType}`}
                         zIndexOffset={9999}
                         position={[arptToShow.airport.lat, arptToShow.airport.lon]}
                         icon={L.icon({
                             iconSize: [26, 26],
                             iconAnchor: [13, 13],
-                            iconUrl: (arptToShow.airportType === AirportType.Arrival) ? (props.arrivalIcon || ArrivalWhite) : (props.departureIcon || DepartureWhite)
-                        })}>
+                            iconUrl: (arptToShow.airportType === AirportType.Arrival) ? (props.arrivalIcon || ArrivalWhite) : (props.departureIcon || DepartureWhite),
+                        })}
+                    >
                         <Tooltip className="airport-tooltip" direction="top" permanent>
-                            <p>{arptToShow.airport.icao} - {arptToShow.airport.name}</p>
+                            <p>
+                                {arptToShow.airport.icao}
+                                {' '}
+                                -
+                                {' '}
+                                {arptToShow.airport.name}
+                            </p>
                         </Tooltip>
                     </Marker>
-                )
+                ))
             }
         </FeatureGroup>
     );

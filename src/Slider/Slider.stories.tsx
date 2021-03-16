@@ -3,14 +3,14 @@ import React, { useState } from 'react';
 import Slider from './Slider';
 
 export default {
-    title: 'Slider'
+    title: 'Slider',
     /* To make a fullscreen component use the layout parameter.
        Also requires 'style={{ width: '100vw', height: '100vh' }}'
        to be present on the component or a wrapper div.
 
     ,parameters: {
         layout: 'fullscreen'
-    }*/
+    } */
 };
 
 export const Default = () => {

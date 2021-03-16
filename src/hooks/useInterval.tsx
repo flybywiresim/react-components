@@ -34,6 +34,8 @@ function useInterval(callback: () => void, delay: number | null, options?: UseIn
             const id = setInterval(tick, delay);
             return () => clearInterval(id);
         }
+
+        return () => {};
     }, deps);
 }
 export default useInterval;
