@@ -49,6 +49,7 @@
     "@babel/core": "^7.12.10",
     "@datenpate/leaflet.polylinemeasure": "^1.0.0",
     "@flybywiresim/api-client": "^0.9.0",
+    "@flybywiresim/eslint-config": "~0.1.0",
     "@flybywiresim/tailwind-config": "~0.3.0",
     "@marfle/react-leaflet-nmscale": "^2.0.0",
     "@rollup/plugin-commonjs": "^17.1.0",

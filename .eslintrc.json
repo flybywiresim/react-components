@@ -1,15 +1,27 @@
 {
+    "globals": {
+        "JSX": true
+    },
     "env": {
         "browser": true,
         "es2021": true,
         "node": true
     },
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:@typescript-eslint/recommended"
+    "extends": "@flybywiresim/eslint-config",
+    "plugins": [
+        "@typescript-eslint"
     ],
     "parser": "@typescript-eslint/parser",
+    "ignorePatterns": [
+        "*.test.tsx"
+    ],
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+            }
+        }
+    },
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -17,40 +29,7 @@
         "ecmaVersion": 12,
         "sourceType": "module"
     },
-    "plugins": [
-        "react",
-        "@typescript-eslint"
-    ],
     "rules": {
-        "indent": [
-            "error",
-            4
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ],
-        "object-curly-spacing": [
-            "error",
-            "always"
-        ],
-        "no-unused-vars": [
-            "error"
-        ],
-        "@typescript-eslint/no-explicit-any": [
-            "off"
-        ],
-        "eol-last": [
-            "error",
-            "always"
-        ]
+        "no-nested-ternary": "off"
     }
 }
