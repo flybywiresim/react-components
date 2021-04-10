@@ -1,20 +1,13 @@
 module.exports = {
-    purge: [
-        './src/**/*.html',
-        './src/**/*.js',
-    ],
+    purge: {
+        enabled: true,
+        content: [
+            './src/**/*.{html,js,jsx,ts,tsx}',
+        ],
+    },
     darkMode: false, // or 'media' or 'class'
-    theme: {
-        extend: {
-            boxShadow: {
-                'inner-sm': 'inset 0 1px 2px 0 rgba(0, 0, 0, 0.05)'
-            }
-        },
-    },
-    variants: {
-        extend: {},
-    },
+    theme: { extend: { boxShadow: { 'inner-sm': 'inset 0 1px 2px 0 rgba(0, 0, 0, 0.05)' } } },
     plugins: [
-        require('@flybywiresim/tailwind-config')
+        require('@flybywiresim/tailwind-config'),
     ],
 };
