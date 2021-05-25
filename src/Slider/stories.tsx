@@ -1,6 +1,6 @@
 // Generated with util/create-component.js
 import React, { useState } from 'react';
-import Slider from './Slider';
+import Slider from './index';
 
 export default {
     title: 'Slider',

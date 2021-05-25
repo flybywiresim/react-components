@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
 
-import './Slider.scss';
+import './styles.scss';
 
 export type SliderProps = { className?: string, value?: number, onInput?: (v: number) => void, dark?: boolean };
 
-const Slider: React.FC<SliderProps> = ({ className, onInput, value, dark = true }: SliderProps) => {
+export const Slider: React.FC<SliderProps> = ({ className, onInput, value, dark = true }: SliderProps) => {
     const sliderRef = useRef<HTMLInputElement>(null);
 
     const handleInput = () => {

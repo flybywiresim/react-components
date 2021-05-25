@@ -2,7 +2,7 @@ import React from 'react';
 
 export type ToggleProps = { value: boolean, onToggle: (value: boolean) => void, dark?: boolean; };
 
-const Toggle: React.FC<ToggleProps> = ({ value, onToggle, dark = true }) => (
+export const Toggle: React.FC<ToggleProps> = ({ value, onToggle, dark = true }) => (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
     <div
         onClick={() => onToggle(!value)}
