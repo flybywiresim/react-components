@@ -12,10 +12,10 @@
 
   #control-panel {
     pointer-events: all !important;
-    margin-bottom: 1.75rem;
-    margin-right: 1rem;
+    bottom: 1.75rem;
+    right: 1rem;
+    
     .button-group {
-      margin-top: 1rem;
       button {
         border-bottom: 1px solid #ccc;
         &:last-of-type {
