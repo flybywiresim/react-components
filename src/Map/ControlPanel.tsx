@@ -19,7 +19,7 @@ export const ControlPanel: React.FC = () => {
 
     return (
         <div id="control-panel" className="flex flex-col leaflet-right leaflet-bottom">
-            <div className="leaflet-control button-group bg-gray-100 rounded-sm">
+            <div className="leaflet-control button-group bg-gray-100 border-2 rounded-sm shadow-md">
                 <ControlButton
                     label="Turn on polyline measurements"
                     // eslint-disable-next-line
@@ -47,7 +47,7 @@ export const ControlPanel: React.FC = () => {
                 </ControlButton>
 
             </div>
-            <div className="leaflet-control button-group bg-gray-100 rounded-sm">
+            <div className="leaflet-control button-group bg-gray-100 border-2 rounded-sm shadow-md">
                 <ControlButton label="Zoom In" onClick={() => mapRef.zoomIn()}>
                     <IconPlus size={16} />
                 </ControlButton>
@@ -79,7 +79,7 @@ type ControlButtonProps = {
 const ControlButton: React.FC<ControlButtonProps> = ({ label, onClick, children }) => (
     <button
         type="button"
-        className="flex flex-col justify-center items-center border-0 pointer focus:outline-none py-2 w-8"
+        className="flex flex-col justify-center items-center hover:bg-gray-200 border-0 pointer focus:outline-none py-2 w-8"
         aria-label={label}
         onClick={onClick}
     >

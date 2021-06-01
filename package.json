@@ -41,9 +41,9 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
+    "@tabler/icons": ">=1.41.2",
     "react": ">=17.0.1",
-    "react-dom": ">=17.0.1",
-    "@tabler/icons": ">=1.41.2"
+    "react-dom": ">=17.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
