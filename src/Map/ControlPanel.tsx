@@ -8,7 +8,7 @@ import '@datenpate/leaflet.polylinemeasure';
 export const ControlPanel: React.FC = () => {
     const [units, setUnits] = useState('nm');
     const mapRef = useMap();
-    const measureRef = useRef();
+    const measureRef = useRef<HTMLElement & any>();
 
     useEffect(() => {
         const controlPanel = L.DomUtil.get('control-panel');
@@ -22,25 +22,36 @@ export const ControlPanel: React.FC = () => {
             <div className="leaflet-control button-group bg-gray-100 border-2 rounded-sm shadow-md">
                 <ControlButton
                     label="Turn on polyline measurements"
-                    // eslint-disable-next-line
-                    onClick={() => measureRef.current._toggleMeasure()}
+                    onClick={() => {
+                        if (measureRef.current) {
+                            // eslint-disable-next-line
+                            measureRef.current._toggleMeasure();
+                        }
+                    }}
                 >
                     <IconRoute size={16} />
                 </ControlButton>
                 <ControlButton
                     label="Clear polyline measurements"
                     // eslint-disable-next-line
-                    onClick={() => measureRef.current._clearAllMeasurements()}
+                    onClick={() => {
+                        if (measureRef.current) {
+                            // eslint-disable-next-line
+                            measureRef.current._clearAllMeasurements();
+                        }
+                    }}
                 >
                     <IconX size={16} />
                 </ControlButton>
                 <ControlButton
                     label="Change Measurement Unit"
                     onClick={() => {
-                        // eslint-disable-next-line
-                        measureRef.current._changeUnit();
-                        // eslint-disable-next-line
-                        setUnits(measureRef.current._unitControl.innerText);
+                        if (measureRef.current) {
+                            // eslint-disable-next-line
+                            measureRef.current._changeUnit();
+                            // eslint-disable-next-line
+                            setUnits(measureRef.current._unitControl.innerText);
+                        }
                     }}
                 >
                     {units}
@@ -57,7 +68,6 @@ export const ControlPanel: React.FC = () => {
             </div>
             <MeasureControl
                 ref={measureRef}
-                // position={props.zoomPosition || 'bottomright'}
                 unit="nauticalmiles"
                 showBearings
                 showUnitControl
