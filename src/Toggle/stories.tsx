@@ -1,6 +1,6 @@
 // Generated with util/create-component.js
 import React, { useState } from 'react';
-import Toggle from './Toggle';
+import Toggle from './index';
 
 export default {
     title: 'Toggle',

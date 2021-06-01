@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { TileLayer, MapContainer, ZoomControl } from 'react-leaflet';
+import { TileLayer, MapContainer } from 'react-leaflet';
 import { NmScale } from '@marfle/react-leaflet-nmscale';
 import { TelexConnection } from '@flybywiresim/api-client';
 import WeatherLayer from './WeatherLayer';
-
+import ControlPanel from './ControlPanel';
 import FlightsLayer from './FlightsLayer';
 import MenuPanel from './MenuPanel';
 
@@ -19,8 +19,6 @@ import PlaneBlue from './res/icons/plane_blue.png';
 import CartoDarkPreview from './res/previews/carto-dark.png';
 import CartoLightPreview from './res/previews/carto-light.png';
 import OsmPreview from './res/previews/osm.png';
-
-import { MeasureControl } from './MeasureControl';
 import { MapProps, TileSet } from './Map.types';
 import { useLocalStorage } from '../hooks';
 
@@ -122,17 +120,8 @@ const Map = (props: MapProps): JSX.Element => {
                     )
                     : <></>
             }
-            <ZoomControl position={props.zoomPosition || 'bottomright'} />
+            <ControlPanel />
             <NmScale />
-            <MeasureControl
-                position={props.zoomPosition || 'bottomright'}
-                unit="nauticalmiles"
-                showBearings
-                showUnitControl
-                showClearControl
-                tempLine={{ color: '#00C2CB', weight: 2 }}
-                fixedLine={{ color: '#00C2CB', weight: 2 }}
-            />
         </MapContainer>
     );
 };

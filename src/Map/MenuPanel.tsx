@@ -2,7 +2,7 @@ import React, { useState, useEffect, FormEvent } from 'react';
 import { Telex, TelexConnection } from '@flybywiresim/api-client';
 import { useMap } from 'react-leaflet';
 import L, { LatLng } from 'leaflet';
-import { ChevronDown, Search } from 'tabler-icons-react';
+import { IconChevronDown, IconSearch } from '@tabler/icons';
 import { useInterval } from '../hooks';
 import { TileSet } from './Map.types';
 import { Toggle } from '../Toggle';
@@ -119,7 +119,7 @@ const MenuPanel = (props: MenuPanelProps): JSX.Element => {
                     aria-label="Menu"
                     onClick={() => setShowDetails(!showDetails)}
                 >
-                    <ChevronDown className={`text-gray-500 transform transition-transform ${showDetails ? 'rotate-180' : ''}`} />
+                    <IconChevronDown className={`text-gray-500 transform transition-transform ${showDetails ? 'rotate-180' : ''}`} />
                 </button>
                 <input
                     type="text"
@@ -141,7 +141,7 @@ const MenuPanel = (props: MenuPanelProps): JSX.Element => {
                     onClick={() => handleSearch()}
                     className="search-button ml-auto border-0 pointer"
                 >
-                    <Search className="text-gray-500" />
+                    <IconSearch className="text-gray-500" />
                 </button>
                 <datalist id="autocomplete">
                     {
