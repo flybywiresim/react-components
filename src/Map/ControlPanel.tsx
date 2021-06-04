@@ -18,52 +18,54 @@ export const ControlPanel: React.FC = () => {
     }, [mapRef]);
 
     return (
-        <div id="control-panel" className="flex flex-col leaflet-right leaflet-bottom">
+        <div
+            id="control-panel"
+            className="flex flex-col leaflet-right leaflet-bottom"
+        >
             <div className="leaflet-control button-group bg-gray-100 border-2 rounded-sm shadow-md">
                 <ControlButton
                     label="Turn on polyline measurements"
                     onClick={() => {
                         if (measureRef.current) {
                             // eslint-disable-next-line
-                            measureRef.current._toggleMeasure();
+              measureRef.current._toggleMeasure();
                         }
                     }}
                 >
-                    <IconRoute size={16} />
+                    <IconRoute size={16} color="black" />
                 </ControlButton>
                 <ControlButton
                     label="Clear polyline measurements"
                     // eslint-disable-next-line
-                    onClick={() => {
+          onClick={() => {
                         if (measureRef.current) {
                             // eslint-disable-next-line
-                            measureRef.current._clearAllMeasurements();
+              measureRef.current._clearAllMeasurements();
                         }
                     }}
                 >
-                    <IconX size={16} />
+                    <IconX size={16} color="black" />
                 </ControlButton>
                 <ControlButton
                     label="Change Measurement Unit"
                     onClick={() => {
                         if (measureRef.current) {
                             // eslint-disable-next-line
-                            measureRef.current._changeUnit();
+              measureRef.current._changeUnit();
                             // eslint-disable-next-line
-                            setUnits(measureRef.current._unitControl.innerText);
+              setUnits(measureRef.current._unitControl.innerText);
                         }
                     }}
                 >
                     {units}
                 </ControlButton>
-
             </div>
             <div className="leaflet-control button-group bg-gray-100 border-2 rounded-sm shadow-md">
                 <ControlButton label="Zoom In" onClick={() => mapRef.zoomIn()}>
-                    <IconPlus size={16} />
+                    <IconPlus size={16} color="black" />
                 </ControlButton>
                 <ControlButton label="Zoom Out" onClick={() => mapRef.zoomOut()}>
-                    <IconMinus size={16} />
+                    <IconMinus size={16} color="black" />
                 </ControlButton>
             </div>
             <MeasureControl
@@ -72,24 +74,33 @@ export const ControlPanel: React.FC = () => {
                 showBearings
                 showUnitControl
                 showClearControl
-                tempLine={{ color: '#00C2CB', weight: 2 }}
-                fixedLine={{ color: '#00C2CB', weight: 2 }}
+                tempLine={{
+                    color: '#00C2CB',
+                    weight: 2,
+                }}
+                fixedLine={{
+                    color: '#00C2CB',
+                    weight: 2,
+                }}
             />
         </div>
     );
 };
 
 type ControlButtonProps = {
-    label?: string
-    onClick?: () => void
-    children?: React.ReactNode
+  label?: string;
+  onClick?: () => void;
+  children?: React.ReactNode;
+};
 
-}
-
-const ControlButton: React.FC<ControlButtonProps> = ({ label, onClick, children }) => (
+const ControlButton: React.FC<ControlButtonProps> = ({
+    label,
+    onClick,
+    children,
+}) => (
     <button
         type="button"
-        className="flex flex-col justify-center items-center hover:bg-gray-200 border-0 pointer focus:outline-none py-2 w-8"
+        className="flex flex-col justify-center items-center hover:bg-gray-200 border-0 pointer focus:outline-none py-2 w-8 text-black"
         aria-label={label}
         onClick={onClick}
     >
