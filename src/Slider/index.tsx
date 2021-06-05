@@ -23,7 +23,7 @@ export const Slider: React.FC<SliderProps> = ({ className, onInput, value, dark 
             type="range"
             min="1"
             max="100"
-            className={`${className} ${dark ? 'slider' : 'slider-light'} bg-blue-darker w-60 h-1 pb-1 pt-0 rounded-full shadow-inner-sm`}
+            className={`${dark ? 'slider' : 'slider-light'} bg-blue-darker h-1 pb-1 pt-0 rounded-full shadow-inner-sm ${className}`}
         />
     );
 };
