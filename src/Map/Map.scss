@@ -14,7 +14,7 @@
     pointer-events: all !important;
     bottom: 1.75rem;
     right: 1rem;
-    
+
     .button-group {
       button {
         border-bottom: 1px solid #ccc;
@@ -36,9 +36,6 @@
 
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 
-    &:hover {
-      @apply shadow-lg
-    }
     .divider {
       margin-left: 2.5rem;
       border-top: 1px solid #b5b5b5;
