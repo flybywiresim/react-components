@@ -113,7 +113,7 @@ const MenuPanel = (props: MenuPanelProps): JSX.Element => {
     return (
         <>
             <div id="menu-panel" className="leaflet-top leaflet-left flex flex-col shadow-lg">
-                <div className="w-full z-50 flex flex-row items-center h-11 px-3 py-2 bg-white rounded-md">
+                <div className={`w-full z-50 flex flex-row items-center h-11 px-3 py-2 ${showDetails ? 'bg-gray-50' : 'bg-white'} border-2 border-gray-100 rounded-md`}>
                     <button
                         type="button"
                         className="menu-button w-8 border-0 pointer focus:outline-none"
@@ -125,7 +125,7 @@ const MenuPanel = (props: MenuPanelProps): JSX.Element => {
                     <input
                         type="text"
                         aria-label="Search Field"
-                        className="text-base placeholder-gray-500 text-gray-600 focus:outline-none"
+                        className={`text-base ${showDetails ? 'bg-gray-50' : 'bg-white'} placeholder-gray-500 text-gray-600 focus:outline-none`}
                         list="autocomplete"
                         placeholder="Flight Number"
                         onChange={(event) => {
