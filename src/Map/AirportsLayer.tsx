@@ -7,9 +7,7 @@ import ArrivalWhite from './res/icons/arrival_white.png';
 import DepartureWhite from './res/icons/departure_white.png';
 
 export enum AirportType {
-    // eslint-disable-next-line no-unused-vars
     Departure,
-    // eslint-disable-next-line no-unused-vars
     Arrival,
 }
 

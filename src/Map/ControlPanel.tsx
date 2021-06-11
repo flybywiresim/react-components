@@ -28,7 +28,7 @@ export const ControlPanel: React.FC = () => {
                     onClick={() => {
                         if (measureRef.current) {
                             // eslint-disable-next-line
-              measureRef.current._toggleMeasure();
+                            measureRef.current._toggleMeasure();
                         }
                     }}
                 >
@@ -36,11 +36,10 @@ export const ControlPanel: React.FC = () => {
                 </ControlButton>
                 <ControlButton
                     label="Clear polyline measurements"
-                    // eslint-disable-next-line
-          onClick={() => {
+                    onClick={() => {
                         if (measureRef.current) {
                             // eslint-disable-next-line
-              measureRef.current._clearAllMeasurements();
+                            measureRef.current._clearAllMeasurements();
                         }
                     }}
                 >
@@ -51,9 +50,9 @@ export const ControlPanel: React.FC = () => {
                     onClick={() => {
                         if (measureRef.current) {
                             // eslint-disable-next-line
-              measureRef.current._changeUnit();
+                            measureRef.current._changeUnit();
                             // eslint-disable-next-line
-              setUnits(measureRef.current._unitControl.innerText);
+                            setUnits(measureRef.current._unitControl.innerText);
                         }
                     }}
                 >

@@ -9,7 +9,6 @@ import { useInterval } from '../hooks';
 import { CurrentFlight, CurrentFLightCallback } from './Map.types';
 
 export type FlightsLayerProps = {
-    // eslint-disable-next-line no-unused-vars
     onConnectionsUpdate?: (connections: TelexConnection[]) => void,
     planeIcon: string,
     planeIconHighlight: string,
@@ -33,7 +32,6 @@ const FlightsLayer = (props: FlightsLayerProps): JSX.Element => {
         },
     });
 
-    // eslint-disable-next-line no-unused-vars
     const [, setIsUpdating] = useState<boolean>(false);
     const [data, setData] = useState<TelexConnection[]>([]);
     const [bounds, setBounds] = useState<LatLngBounds>(map.getBounds());

@@ -147,7 +147,6 @@ const MenuPanel = (props: MenuPanelProps): JSX.Element => {
                     <datalist id="autocomplete">
                         {
                             autocompleteList.map((connection) => (!searchValue || connection.flight.startsWith(searchValue)
-                            // eslint-disable-next-line jsx-a11y/control-has-associated-label
                                 ? <option key={connection.id} value={connection.flight} /> : <></>))
                         }
                     </datalist>
@@ -178,8 +177,7 @@ const MenuPanel = (props: MenuPanelProps): JSX.Element => {
                                     <div onChange={handleTileSelect} className="flex flex-row space-x-4">
                                         {
                                             props.availableTileSets.map((tileSet) => (
-                                            // eslint-disable-next-line jsx-a11y/label-has-associated-control
-                                                <label className="tileset-select flex-grow" key={tileSet.value}>
+                                                <label className="tileset-select flex-grow" key={tileSet.value} htmlFor="tileset">
                                                     <input
                                                         type="radio"
                                                         name="tileset"

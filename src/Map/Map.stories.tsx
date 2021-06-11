@@ -1,5 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import React from 'react';
 import Map from './Map';
 import { CurrentFlight } from './Map.types';
@@ -26,13 +24,13 @@ const currentFlight = async (): Promise<CurrentFlight> => {
     };
 };
 
-export const Default: React.FC = () => <div style={{ width: '100vw', height: '100vh' }}><Map /></div>;
+export const Default = () => <div style={{ width: '100vw', height: '100vh' }}><Map /></div>;
 
-export const ForceCartoLight: React.FC = () => <div style={{ width: '100vw', height: '100vh' }}><Map forceTileset="carto-light" /></div>;
+export const ForceCartoLight = () => <div style={{ width: '100vw', height: '100vh' }}><Map forceTileset="carto-light" /></div>;
 
-export const NoMenu: React.FC = () => <div style={{ width: '100vw', height: '100vh' }}><Map disableMenu /></div>;
+export const NoMenu = () => <div style={{ width: '100vw', height: '100vh' }}><Map disableMenu /></div>;
 
-export const OnlyCurrentFlight: React.FC = () => (
+export const OnlyCurrentFlight = () => (
     <div style={{ width: '100vw', height: '100vh' }}>
         <Map
             currentFlight={currentFlight}
@@ -42,7 +40,7 @@ export const OnlyCurrentFlight: React.FC = () => (
     </div>
 );
 
-export const OnlyCurrentFlightNoFollow: React.FC = () => (
+export const OnlyCurrentFlightNoFollow = () => (
     <div style={{ width: '100vw', height: '100vh' }}>
         <Map
             currentFlight={currentFlight}
