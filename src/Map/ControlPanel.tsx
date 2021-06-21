@@ -3,7 +3,6 @@ import { useMap } from 'react-leaflet';
 import { IconRoute, IconX, IconPlus, IconMinus } from '@tabler/icons';
 import * as L from 'leaflet';
 import { MeasureControl } from './MeasureControl';
-import '@datenpate/leaflet.polylinemeasure';
 
 export const ControlPanel: React.FC = () => {
     const [units, setUnits] = useState('nm');
