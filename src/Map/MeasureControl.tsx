@@ -1,6 +1,6 @@
 import { createControlComponent } from '@react-leaflet/core';
-import '@datenpate/leaflet.polylinemeasure';
 import * as L from 'leaflet';
+import 'leaflet.polylinemeasure';
 
 type Unit = 'metres' | 'landmiles' | 'nauticalmiles';
 
