@@ -177,9 +177,10 @@ const MenuPanel = (props: MenuPanelProps): JSX.Element => {
                                     <div onChange={handleTileSelect} className="flex flex-row space-x-4">
                                         {
                                             props.availableTileSets.map((tileSet) => (
-                                                <label className="tileset-select flex-grow" key={tileSet.value} htmlFor="tileset">
+                                                <label className="tileset-select flex-grow" key={tileSet.value} htmlFor={tileSet.value}>
                                                     <input
                                                         type="radio"
+                                                        id={tileSet.value}
                                                         name="tileset"
                                                         value={tileSet.value}
                                                         defaultChecked={props.activeTileSet && tileSet.value === props.activeTileSet.value}
