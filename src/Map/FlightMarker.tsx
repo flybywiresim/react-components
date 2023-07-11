@@ -96,9 +96,9 @@ const FlightMarker = (props: FlightMarkerProps): JSX.Element => {
                 onOpen={() => (props.onPopupOpen ? props.onPopupOpen() : {})}
                 onClose={() => (props.onPopupClose ? props.onPopupClose() : {})}
             >
-                <h1>
+                <h1 style={styles['popup-header-text-content']}>
                     Flight
-                    {connection.flight}
+                    {": " + connection.flight}
                 </h1>
                 {
                     (connection.origin && connection.destination)
@@ -114,18 +114,30 @@ const FlightMarker = (props: FlightMarkerProps): JSX.Element => {
                         )
                         : ''
                 }
-                <p>
+                <p style={styles["popup-paragraph-text-content"]}>
                     Aircraft:
-                    {connection.aircraftType}
+                    {" " + connection.aircraftType}
                 </p>
-                <p>
+                <p style={styles["popup-paragraph-text-content"]}>
                     Altitude:
-                    {connection.trueAltitude}
+                    {" " + connection.trueAltitude}
                     ft
                 </p>
             </Popup>
         </Marker>
     );
+    
+};
+
+const styles = {
+    "popup-header-text-content": {
+        "font-size": "200%",
+        "display": "block",
+      },
+      "popup-paragraph-text-content": {
+        "font-size": "125%",
+        "display": "block",
+      }
 };
 
 export default FlightMarker;
